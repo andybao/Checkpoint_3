@@ -1,0 +1,51 @@
+﻿@model CheckPoint_3.Models.Msgs
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Global_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Msgs</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Msg)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Msg)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sender_User_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sender_User_Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Receiver_User_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Receiver_User_Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pre_Msg_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pre_Msg_Id)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

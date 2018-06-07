@@ -1,0 +1,36 @@
+﻿@model CheckPoint_3.Models.MessageAndUser
+@{
+    ViewBag.Title = "AdminHomePage";
+    
+    Layout = "~/Views/Shared/_Global_Layout.cshtml";
+}
+
+<h2>Admin Home Page</h2>
+
+<div>
+    @Html.ActionLink("Message Management", "Index", "Msgs", null, new { @class = "btn btn-primary" })
+    &nbsp;&nbsp;
+    @Html.ActionLink("Logout", "Logout", "Home", new { @class = "btn btn-info" })
+</div>
+
+<h3>Check user name by ajax</h3>
+<div class="row">
+    <!--BEGIN row-->
+    <div class="col-lg-6">
+        @using (Ajax.BeginForm("Users_DDL", "Home",
+                    new AjaxOptions
+                    {
+                        HttpMethod = "POST",
+                        UpdateTargetId = "user_ddl_result",
+                        InsertionMode = InsertionMode.Replace
+                    }, new { id = "user_form" }))
+        {
+            @Html.DropDownListFor(model => model.user,
+                    new SelectList(Model.users, "Id", "Email"),
+                    "-Select a user-",
+                    new { id = "user_ddl" })
+        }
+        <div id="user_ddl_result"></div>
+    </div>
+</div>
+<script src="~/Scripts/Home/homepage_ajax.js"></script>

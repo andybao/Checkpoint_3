@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CheckPointModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Msgs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Msg" Type="text" Nullable="false" />
+          <Property Name="Sender_User_Id" Type="int" Nullable="false" />
+          <Property Name="Receiver_User_Id" Type="int" Nullable="false" />
+          <Property Name="Pre_Msg_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Site_Roles">
+          <Key>
+            <PropertyRef Name="Role_Code" />
+          </Key>
+          <Property Name="Role_Code" Type="int" Nullable="false" />
+          <Property Name="Role_Name" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Role_Description" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Site_Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="First_Name" Type="varchar(max)" Nullable="false" />
+          <Property Name="Last_Name" Type="varchar(max)" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Passward" Type="varchar" MaxLength="10" />
+          <Property Name="User_Role_Code" Type="int" Nullable="false" />
+          <Property Name="New_Msg_Id" Type="int" />
+        </EntityType>
+        <Association Name="Site_Users_Role_Code">
+          <End Role="Site_Roles" Type="Self.Site_Roles" Multiplicity="1" />
+          <End Role="Site_Users" Type="Self.Site_Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Site_Roles">
+              <PropertyRef Name="Role_Code" />
+            </Principal>
+            <Dependent Role="Site_Users">
+              <PropertyRef Name="User_Role_Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CheckPointModelStoreContainer">
+          <EntitySet Name="Msgs" EntityType="Self.Msgs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Site_Roles" EntityType="Self.Site_Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Site_Users" EntityType="Self.Site_Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="Site_Users_Role_Code" Association="Self.Site_Users_Role_Code">
+            <End Role="Site_Roles" EntitySet="Site_Roles" />
+            <End Role="Site_Users" EntitySet="Site_Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CheckPointModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Msgs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Msg" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sender_User_Id" Type="Int32" Nullable="false" />
+          <Property Name="Receiver_User_Id" Type="Int32" Nullable="false" />
+          <Property Name="Pre_Msg_Id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Site_Roles">
+          <Key>
+            <PropertyRef Name="Role_Code" />
+          </Key>
+          <Property Name="Role_Code" Type="Int32" Nullable="false" />
+          <Property Name="Role_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Role_Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Site_Users" Relationship="Self.Site_Users_Role_Code" FromRole="Site_Roles" ToRole="Site_Users" />
+        </EntityType>
+        <EntityType Name="Site_Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="First_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Last_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Passward" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="User_Role_Code" Type="Int32" Nullable="false" />
+          <Property Name="New_Msg_Id" Type="Int32" />
+          <NavigationProperty Name="Site_Roles" Relationship="Self.Site_Users_Role_Code" FromRole="Site_Users" ToRole="Site_Roles" />
+        </EntityType>
+        <Association Name="Site_Users_Role_Code">
+          <End Role="Site_Roles" Type="Self.Site_Roles" Multiplicity="1" />
+          <End Role="Site_Users" Type="Self.Site_Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Site_Roles">
+              <PropertyRef Name="Role_Code" />
+            </Principal>
+            <Dependent Role="Site_Users">
+              <PropertyRef Name="User_Role_Code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CheckPointContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Msgs" EntityType="Self.Msgs" />
+          <EntitySet Name="Site_Roles" EntityType="Self.Site_Roles" />
+          <EntitySet Name="Site_Users" EntityType="Self.Site_Users" />
+          <AssociationSet Name="Site_Users_Role_Code" Association="Self.Site_Users_Role_Code">
+            <End Role="Site_Roles" EntitySet="Site_Roles" />
+            <End Role="Site_Users" EntitySet="Site_Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CheckPointModelStoreContainer" CdmEntityContainer="CheckPointContext">
+          <EntitySetMapping Name="Msgs">
+            <EntityTypeMapping TypeName="CheckPointModel.Msgs">
+              <MappingFragment StoreEntitySet="Msgs">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Msg" ColumnName="Msg" />
+                <ScalarProperty Name="Sender_User_Id" ColumnName="Sender_User_Id" />
+                <ScalarProperty Name="Receiver_User_Id" ColumnName="Receiver_User_Id" />
+                <ScalarProperty Name="Pre_Msg_Id" ColumnName="Pre_Msg_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Site_Roles">
+            <EntityTypeMapping TypeName="CheckPointModel.Site_Roles">
+              <MappingFragment StoreEntitySet="Site_Roles">
+                <ScalarProperty Name="Role_Code" ColumnName="Role_Code" />
+                <ScalarProperty Name="Role_Name" ColumnName="Role_Name" />
+                <ScalarProperty Name="Role_Description" ColumnName="Role_Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Site_Users">
+            <EntityTypeMapping TypeName="CheckPointModel.Site_Users">
+              <MappingFragment StoreEntitySet="Site_Users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+                <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Passward" ColumnName="Passward" />
+                <ScalarProperty Name="User_Role_Code" ColumnName="User_Role_Code" />
+                <ScalarProperty Name="New_Msg_Id" ColumnName="New_Msg_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

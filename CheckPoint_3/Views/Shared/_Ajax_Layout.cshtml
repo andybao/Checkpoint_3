@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+@*This is a custom made layout*@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Custom Layout</title>
+        <script src="~/Scripts/jquery-1.10.2.min.js"></script><!--Bootstrap-->
+        <script src="~/Scripts/bootstrap.min.js"></script>
+        <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+        <script src="~/Scripts/jquery.validate.min.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+        <link href="~/Content/Site.css" rel="stylesheet" />
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <div class="jumbotron">
+                    <h1 class="text-center">Checkpoint 3</h1>
+                </div>
+            </div> 
+        </header>
+        <div class="container body-content">
+            <main>
+                @*The RenderBody method is the placeholder for views that will use this layout. Views that use this layout will render their contents here*@
+                @RenderBody()
+            </main>
+            <br />
+            <footer>
+                @Html.Partial("~/Views/Shared/_Footer.cshtml")
+            </footer>
+        </div>
+
+
+    </body>
+</html>

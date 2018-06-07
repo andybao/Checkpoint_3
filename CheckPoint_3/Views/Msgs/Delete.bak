@@ -1,0 +1,56 @@
+﻿@model CheckPoint_3.Models.Msgs
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Msgs</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Msg)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Msg)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sender_User_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sender_User_Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Receiver_User_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Receiver_User_Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pre_Msg_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pre_Msg_Id)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

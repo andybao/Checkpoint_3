@@ -1,0 +1,111 @@
+﻿@model CheckPoint_3.Models.MessageAndUser
+@{
+    ViewBag.Title = "UserHomePage";
+    Layout = "~/Views/Shared/_Global_Layout.cshtml";
+}
+
+
+@if (User.IsInRole("User"))
+{
+    <h2>User Home Page</h2>
+    <p>Welcome back, <strong>@Model.user.First_Name @Model.user.Last_Name</strong>!</p>
+    <div>
+    @Html.ActionLink("Create a new message", "Create", "Msgs", new { id = Model.user.Id }, new { @class = "btn btn-primary" })
+    &nbsp;&nbsp;
+    @Html.ActionLink("Logout", "Logout", "Home", new { @class = "btn btn-info" })
+    </div>
+
+    <h3>Messages you sent:</h3>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.messages.First().Msg)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.messages.First().Sender_User_Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.messages.First().Receiver_User_Id)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.messages)
+        {
+            if (item.Sender_User_Id == Model.user.Id)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Msg)
+                    </td>
+                    <td>
+                        @foreach (var u in Model.users)
+                        {
+                            if (u.Id == item.Sender_User_Id)
+                            {
+                                @Html.DisplayFor(modelItem => u.Email)
+                            }
+                        }
+                    </td>
+                    <td>
+                        @foreach (var u in Model.users)
+                        {
+                            if (u.Id == item.Receiver_User_Id)
+                            {
+                                @Html.DisplayFor(modelItem => u.Email)
+                            }
+                        }
+                    </td>
+                </tr>
+            }
+        }
+
+    </table>
+
+    <h3>Messages you received:</h3>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.messages.First().Msg)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.messages.First().Sender_User_Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.messages.First().Receiver_User_Id)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model.messages)
+            {
+                if (item.Receiver_User_Id == Model.user.Id)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Msg)
+                        </td>
+                        <td>
+                            @foreach (var u in Model.users)
+                        {
+                            if (u.Id == item.Sender_User_Id)
+                            {
+                                    @Html.DisplayFor(modelItem => u.Email)
+                                }
+                            }
+                        </td>
+                        <td>
+                            @foreach (var u in Model.users)
+                        {
+                            if (u.Id == item.Receiver_User_Id)
+                            {
+                                    @Html.DisplayFor(modelItem => u.Email)
+                                }
+                            }
+                        </td>
+                    </tr>
+                }
+            }
+
+        </table>
+}

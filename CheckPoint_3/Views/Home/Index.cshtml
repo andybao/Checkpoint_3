@@ -1,0 +1,31 @@
+﻿@model CheckPoint_3.Models.Site_Users
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Global_Layout.cshtml";
+}
+
+<p>@ViewBag.Message</p>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <form class="form-signin">
+                    <h2 class="form-signin-heading">Please Signin</h2>
+
+                    @Html.LabelFor(su => su.Email, new { @class = "sr-only" })
+                    @Html.TextBoxFor(su => su.Email, new { @class = "form-control", type = "email", id = "inputEmail", placeholder = "Email address", required = "required", autofocus = "autofocus" })
+
+                    @Html.LabelFor(su => su.Passward, new { @class = "sr-only" })
+                    @Html.TextBoxFor(su => su.Passward, new { @class = "form-control", type = "password", id = "inputPassword", placeholder = "Password", required = "required" })
+                    <br />
+                    <input type="submit" value="Login" class="btn btn-primary btn-block" />
+
+                </form>
+            </div>
+        </div>
+    </div>
+}

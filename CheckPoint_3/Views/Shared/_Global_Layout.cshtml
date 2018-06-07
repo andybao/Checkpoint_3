@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Lady Dunn Health Centre Project</title>
+    <!--CSS CDN-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <!--custom css file-->
+    <link href="~/Content/Pam.css" rel="stylesheet" type="text/css" />
+    <!--site icon image-->
+    <link rel="icon" type="image/png" href="~/Images/favicon.ico">
+</head>
+<body>
+    <header id="main_nav_container">
+        <div id="main_nav_box">
+            <!--header logon link to home page-->
+            <div class="nav_login_box">
+                <a href='http://ladydunn.azurewebsites.net/' class="nav_logo_link">
+                    <img class="logo" src='@Url.Content("~/Images/logo_transparent.png")' alt="the logo of Lady Dunn Health Centre" />
+                </a>
+            </div>
+            <!--burger menu-->
+            <div class="nav-btn">
+                <label for="nav-check">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+            </div>
+            <input type="checkbox" id="nav-check">
+            <!--header navigation-->
+            <div id="main_nav_list">
+                <!--
+                <a class="nav_item" href="">Home</a><span class="nav_pipe"> | </span>
+                -->
+                <!--Pamela : Appointment Feature-->
+                <a class="nav_item" href="http://ladydunn8.azurewebsites.net/Home/Entrance_Lobby">Hospitalization</a>
+                <span class="nav_pipe"> | </span>
+                
+                <!--Andy : Message Feature-->
+                <a class="nav_item" href="http://ladydunn10.azurewebsites.net/">Online Chat</a>
+                <span class="nav_pipe"> | </span>
+                
+                <!--Matthew : Guestbook Feature-->
+                <a class="nav_item" href="http://ladydunn00.azurewebsites.net/Testimonials">Testimonials</a>
+                <span class="nav_pipe"> | </span>
+
+                <!--Nadeem : FAQ Feature-->
+                <a class="nav_item" href="http://ladydunn2.azurewebsites.net/">User Registration</a>
+                <span class="nav_pipe"> | </span>
+
+                <!--Raminder : Contact Us Feature-->
+                <a class="nav_item" href="http://ladydunn6.azurewebsites.net/Jobs/userView">Jobs</a>
+                <span class="nav_pipe"> | </span>
+
+                <!--Pawan : Patient System Feature-->
+                <a class="nav_item" href="https://ladydunn40.azurewebsites.net/PatientAppointments">Patient System</a>
+            </div>
+        </div>
+    </header>
+
+    <!--main content of each page-->
+    <main id="main_container">
+        @RenderBody()
+    </main>
+    
+    <!--footer-->
+    <footer>
+        <div class="container">
+            <div id="footer_box" class="row">
+                <div class="col-sm-12 col-md-12 col-lg-9 container">
+                    <h3>Feature Site Map</h3>
+                    <div class="row">
+                        <div class="col-lg-4 col-4">
+                            <div class="personal_feature">
+                                <!--Features By Pamela-->
+                                <a href="http://ladydunn8.azurewebsites.net/Home/Entrance_Lobby" class="live_link">Appointment</a>
+                                <a href="http://ladydunn8.azurewebsites.net/Home/Entrance_Lobby" class="live_link">Hospitalization</a>
+                                <a href="">Testing Center</a>
+                            </div>
+                            <div class="personal_feature">
+                                <!--Features By Andy-->
+                                <a href="http://ladydunn9.azurewebsites.net" class="live_link">Message</a>
+                                <a href="http://ladydunn10.azurewebsites.net/" class="live_link">Online Chat</a>
+                                <a href="">Survey</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-4">
+                            <div class="personal_feature">
+                                <!--Features By Matthew-->
+                                <a href="http://ladydunn0.azurewebsites.net/Guestbook" class="live_link">Guestbook</a>
+                                <a href="http://ladydunn00.azurewebsites.net/Testimonials" class="live_link">Testimonials</a>
+                                <a href="">Events</a>
+                            </div>
+                            <div class="personal_feature">
+                                <!--Features By Nadeem-->
+                                <a href="http://ladydunn1.azurewebsites.net/Nadeem/userView" class="live_link">FAQ</a>
+                                <a href="http://ladydunn2.azurewebsites.net/" class="live_link">User Registration</a>
+                                <a href="">Users Feedback</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-4">
+                            <div class="personal_feature">
+                                <!--Features By Raminder-->
+                                <a href="http://ladydunn5.azurewebsites.net/contactus/Create" class="live_link">Contact Us</a>
+                                <a href="http://ladydunn6.azurewebsites.net/Jobs/userView"  class="live_link">Jobs Opportinities</a>
+                                <a href="">Lab Results</a>
+                            </div>
+                            <div class="personal_feature">
+                                <!--Features By Pawan-->
+                                <a href="https://ladydunn40.azurewebsites.net/PatientAppointments" class="live_link">Patient System</a>
+                                <a href="">Donations</a>
+                                <a href="">Staff Information</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-3 opening_hour_container">
+                    <h3>Opening Hours</h3>
+                    <div id="opening_hours_box">
+                        <div class="opening_hour">General Department</div>
+                        <div>Monday - Tuesday: 08:00 - 19:00</div>
+                        <div>Wednesday - Friday: 09:00 - 17:30</div>
+                        <br />
+                        <div>Emergency Room</div>
+                        <div>7 days a week | 24 hours</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer_copyright">
+            <p>&copy; Humber College Team One | @DateTime.Now.Year - Lady Dunn Health Centre Project</p>
+            <p>Wenyu Bao | Pawan K. Joshi | Yun Gao | Raminder Kaur | Muhammad Ali Nadeem | Matthew Weber</p>
+        </div>        
+    </footer>
+    <!--JavaScript CDN-->
+<!--
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+-->
+</body>
+</html>

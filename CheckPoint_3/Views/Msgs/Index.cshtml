@@ -1,0 +1,65 @@
+﻿@model CheckPoint_3.Models.MessageAndUser
+
+@{
+    ViewBag.Title = "Message Index";
+    Layout = "~/Views/Shared/_Global_Layout.cshtml";
+}
+
+
+
+@if (User.IsInRole("admin"))
+{
+    <h2>Message list</h2>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.messages.First().Msg)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.messages.First().Sender_User_Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.messages.First().Receiver_User_Id)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.messages)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Msg)
+                </td>
+                <td>
+                    @foreach (var u in Model.users)
+                    {
+                        if (u.Id == item.Sender_User_Id)
+                        {
+                            @Html.DisplayFor(modelItem => u.Email)
+                        }
+                    }
+                </td>
+                <td>
+                    @foreach (var u in Model.users)
+                    {
+                        if (u.Id == item.Receiver_User_Id)
+                        {
+                            @Html.DisplayFor(modelItem => u.Email)
+                        }
+                    }
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+
+<div>
+    @Html.ActionLink("Back to Admin Home", "AdminHomePage", "Home", new { id = 3 }, null);
+</div>

@@ -1,0 +1,54 @@
+﻿@model CheckPoint_3.Models.MessageAndUser
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Global_Layout.cshtml";
+}
+
+<h2>Create a new message</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.message.Id)
+        @Html.HiddenFor(model => model.message.Sender_User_Id)
+        @Html.HiddenFor(model => model.message.Pre_Msg_Id)
+        <div class="form-group">
+            @Html.LabelFor(model => model.message.Msg, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.message.Msg, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.message.Msg, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.message.Receiver_User_Id, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+
+                @Html.DropDownListFor(model => model.user, new SelectList(Model.users, "Id", "Email"), "-Select a Receiver-")
+                
+                @Html.ValidationMessageFor(model => model.message.Receiver_User_Id, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Send" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to User Home", "UserHomePage", "Home", new { id = Model.message.Sender_User_Id }, null);
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

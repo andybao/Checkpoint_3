@@ -1,0 +1,388 @@
+﻿/*--------------------------------------------
+    Google Fonts - MAIN FONTS
+
+    1. font-family: "Roboto", sans-serif;
+    for ganeral text content
+
+    2. font-family: "Rubik", sans-serif;
+    for heading and page or section title
+---------------------------------------------*/
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Rubik:300,400,500,700,900');
+
+/*--------------------------------------------
+    Global Styling
+---------------------------------------------*/
+
+body {
+    font-family: "Roboto", sans-serif;
+    font-size: 1em;
+    /*background-color: #212529;*/
+
+    /* 
+        two lightly color for text content in dark background color 
+        you can choose one of them for text content in main section
+    */
+
+    color: #888;            /* 1. gray */
+    /*color: #fff;*/        /* 2. plain white */
+}
+
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #36b595;
+    text-decoration: none;
+}
+
+h1, h2, h3, h4 {
+    font-family: "Rubik", sans-serif;
+    font-size: 2.5em;
+    font-weight: 600;
+}
+
+h2 {
+    font-size: 2em;
+}
+
+h3 {
+    font-size: 1.3em;
+    margin-bottom: 30px;
+}
+
+h4 {
+    font-size: 1.1em;
+}
+
+p {
+    font-size: 1em;
+}
+
+/* form input styling */
+input,
+select {
+    color: #fff;
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid #fff;
+    font-size: 1.3em;
+    margin-bottom: 30px;
+}
+
+select option {
+    color: #000;
+}
+
+input[type="submit"] {
+    border: 1px solid #fff;
+    border-radius: 10px;
+    height: 40px;
+    font-size: 1.5em;
+    margin-top: 30px;
+}
+
+/* button hover action styling */
+input[type="submit"]:hover {
+    background-color: #36b595;
+    border: 1px solid #36b595;
+    color: #000;
+    cursor: pointer;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+}
+
+/* error message font color : red */
+.required,
+.error_msg {
+    color: #ff0000;
+}
+
+.hidden {
+    position: absolute;
+    left: -99999999px;
+}
+
+.welcome_page {
+    min-height: 480px;
+    color: #fff;
+    text-align: center;
+    margin: 10px auto;
+    position: relative;
+}
+
+.welcome_page div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.visitor_nav {
+    color: #36b595;
+}
+.visitor_nav:hover {
+    border-bottom: 2px solid #36b595;
+}
+
+/*-------------------------------
+    Header & Navigation
+--------------------------------*/
+
+#main_nav_container {
+    height: 120px;
+    width: 100%;
+    position: relative;
+    box-shadow: 2px 2px 5px #333;
+    background-color: #fff;
+    z-index: 2000;
+    overflow: hidden;
+}
+
+#main_nav_box {
+    width: 95%;
+    max-width: 1200px;
+    height: 100%;
+    position: relative;
+    margin: 0 auto;
+    font-size: 1.3em;
+}
+
+#main_nav_box > .nav_login_box {
+    display: inline;
+}
+
+#main_nav_box > .nav_login_box > .nav_logo_link {
+    display: inline-block;
+    font-size: 22px;
+    padding: 10px 10px 10px 10px;
+}
+
+#main_nav_container .logo {
+    height: 70px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(0, -50%);
+}
+
+#main_nav_box > .nav-btn {
+    display: none;
+}
+
+#main_nav_box > #main_nav_list {
+    display: inline;
+    float: right;
+    font-size: 18px;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(0, -50%);
+}
+
+#main_nav_box > #main_nav_list > .nav_pipe {
+    margin: 0 10px;
+}
+
+#main_nav_box > #main_nav_list > a {
+    display: inline-block;
+    text-decoration: none;
+    height: 30px;
+}
+
+#main_nav_box > #main_nav_list > .nav_item:hover {
+    border-bottom: 2px solid #36b595;
+}
+
+#main_nav_box > #nav-check {
+    display: none;
+}
+
+/*-------------------------------
+    Main Container
+--------------------------------*/
+
+#main_container {
+    width: 95%;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+/* navigation link item styling */
+#nav_container .admin_nav_item {
+    margin: 0 20px;
+}
+
+/* navigation link item hover action styling */
+#nav_container a:hover {
+    text-decoration: none;
+    color: #36b595;
+    border-bottom: 2px solid #36b595;
+}
+
+/* Banner Image container */
+
+#banner_slider {
+    height: 556px;
+    overflow: hidden;
+    display: block;
+}
+
+#banner_slider .carousel-inner img {
+    width: 100%;
+    height: 100%;
+}
+
+/*-------------------------------
+    Footer Container
+--------------------------------*/
+
+footer { 
+    position: relative;
+    color: #adadad;
+    background-color: #191919;
+    padding: 30px 0;
+}
+
+#footer_box a {
+    display: block !important;
+}
+
+#footer_box .personal_feature {
+    padding-bottom: 20px;
+}
+
+footer #footer_copyright {
+    margin: 20px 0;
+    border-top: 1px solid #5a5a5a;
+    padding-top: 40px;
+}
+
+footer p {
+    font-size: .8em;
+    font-weight: 300;
+    line-height: 1.8;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+/*-------------------------------
+    Responsive Design
+--------------------------------*/
+
+/* Extra large : above 1024px for widescreen */
+@media only screen and (min-width: 1024px) {
+    #banner_slider {
+        min-height: 72vh;
+    }
+}
+/* only for top navigation menu */
+@media (max-width:1000px) {
+    #banner_slider {
+        height: 100%;
+    }
+
+    #main_nav_container {
+        height: 120px;
+        width: 100%;
+        overflow: visible;
+    }
+
+    #main_nav_box > .nav-btn {
+        display: inline-block;
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translate(0, -50%);
+    }
+
+        #main_nav_box > .nav-btn > label {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            padding: 13px;
+        }
+
+            #main_nav_box > .nav-btn > label:hover {
+                background-color: #e2e2e2;
+            }
+
+            #main_nav_box > .nav-btn > label > span {
+                display: block;
+                width: 25px;
+                height: 10px;
+                border-top: 2px solid #888;
+            }
+
+    #main_nav_box > #main_nav_list {
+        position: absolute;
+        display: block;
+        max-width: 1200px;
+        background-color: #212529;
+        height: 0px;
+        transition: all 1s;
+        overflow-y: hidden;
+        top: 207px;
+        left: 0px;
+    }
+
+        #main_nav_box > #main_nav_list span {
+            display: none;
+        }
+
+        #main_nav_box > #main_nav_list > a {
+            display: block !important;
+            margin: 20px;
+        }
+
+        #main_nav_box > #main_nav_list > .nav_item:hover {
+            font-size: 1.4em;
+            border-bottom: 1px solid #36b595;
+            transition: all .5s;
+        }
+
+    #main_nav_box > #nav-check:not(:checked) + #main_nav_list {
+        height: 0px;
+    }
+
+    #main_nav_box > #nav-check:checked + #main_nav_list {
+        min-height: 385px;
+        position: absolute;
+        top: 313px;
+    }
+}
+
+/* large : 1024px for desktop */
+@media only screen and (max-width: 1024px) {
+
+}
+
+@media only screen and (max-width: 1180px) {
+}
+
+/* Medium : 768px and 1024px for tablet and laptop */
+@media only screen and (min-width: 768px) {
+
+}
+
+/* Extra small : 320px and 480px width for mobile phone */
+@media only screen and (max-width: 480px) {
+    #footer_box .personal_feature {
+        display: block;
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+
+}
